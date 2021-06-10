@@ -25,9 +25,17 @@
     * pip
 
 ## Coding Time.
-* Install Fast Api with pip
+* Install Fast Api with pip 
+    * `python3 -m venv env`
     * `pip install fastapi`
     * `pip install uvicorn[standard]`
+
+* Install Fast Api with pip (Windows)
+    * `python -m venv env`
+    * `env/Scripts/activate`
+    * `pip install fastapi`
+    * `pip install uvicorn[standard]`
+
 
 * Hello world
     * [Ref](https://fastapi.tiangolo.com/tutorial/first-steps/)
