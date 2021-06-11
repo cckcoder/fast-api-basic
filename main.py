@@ -9,9 +9,9 @@ class Book(BaseModel):
 app = FastAPI()
 
 fake_books_db = [
-	{ "book_name": "Mindset" },
-	{ "book_name": "อิคิไก ความหมายของการมีชีวิตอยู่" },
-	{ "book_name": "เลิกเป็นคนดี แล้วชีวิตจะมีความสุข" },
+	{ "name": "Mindset", "price": 189.0 },
+	{ "name": "อิคิไก ความหมายของการมีชีวิตอยู่", "price": 250.0 },
+	{ "name": "เลิกเป็นคนดี แล้วชีวิตจะมีความสุข", "price": 270.0 },
 ]
 
 
@@ -19,9 +19,9 @@ fake_books_db = [
 async def root():
 	return { "message": "Hello World" }
 
-@app.get("/books/{book_id}")
+@app.get("/books/{book_id}", response_model=Book)
 async def read_books(book_id: int):
-	return { "book_id": book_id }
+	return fake_books_db[book_id]
 
 @app.get("/books")
 async def show_all_books(skip: int = 0, limit: int = 10):
