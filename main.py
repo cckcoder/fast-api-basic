@@ -1,4 +1,10 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
+
+
+class Book(BaseModel):
+	name: str
+	price: float
 
 app = FastAPI()
 
@@ -17,8 +23,11 @@ async def root():
 async def read_books(book_id: int):
 	return { "book_id": book_id }
 
-
 @app.get("/books")
 async def show_all_books(skip: int = 0, limit: int = 10):
 	return fake_books_db[skip: skip + limit]
 	
+@app.post("/books")
+async def create_book(book: Book):
+	return book	
+
