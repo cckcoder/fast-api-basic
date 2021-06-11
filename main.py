@@ -29,5 +29,6 @@ async def show_all_books(skip: int = 0, limit: int = 10):
 	
 @app.post("/books")
 async def create_book(book: Book):
-	return book	
+	fake_books_db.append(book)
+	return book
 
